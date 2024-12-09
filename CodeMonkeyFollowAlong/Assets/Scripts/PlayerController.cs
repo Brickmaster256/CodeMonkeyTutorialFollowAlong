@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed = 5f;
     private void Update()
     {
         Vector3 inputVector = new Vector3(0, 0, 0);
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
         }
 
         inputVector = inputVector.normalized;
-
-        transform.position += inputVector;
+        Vector3 moveDirection = inputVector;
+        transform.position += moveDirection * Time.deltaTime * moveSpeed;
     }
 }
