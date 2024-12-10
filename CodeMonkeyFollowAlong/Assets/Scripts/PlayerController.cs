@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
 
         inputVector = inputVector.normalized;
         Vector3 moveDirection = inputVector;
+
         transform.position += moveDirection * Time.deltaTime * moveSpeed;
+
+        float rotateSpeed = 10f;
+        transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed) ;
     }
 }
