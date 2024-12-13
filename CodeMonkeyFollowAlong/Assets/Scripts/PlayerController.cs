@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         if(!canMove)
         {
             //if player can't move forward
-            Vector3 moveDirx = new Vector3(moveDirection.x, 0, 0);
+            Vector3 moveDirx = new Vector3(moveDirection.x, 0, 0).normalized;
             canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHieght, PlayerRadius, moveDirx, moveDistance);
             if(canMove)
             {
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
             else
             {
 
-                Vector3 moveDirz = new Vector3(0,0,    moveDirection.z);
+                Vector3 moveDirz = new Vector3(0,0,    moveDirection.z).normalized;
                 canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHieght, PlayerRadius, moveDirz, moveDistance);
 
                 if(canMove)
