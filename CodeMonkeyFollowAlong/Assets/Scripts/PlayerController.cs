@@ -14,8 +14,10 @@ public class PlayerController : MonoBehaviour
         
         Vector3 moveDirection = input.GetInputVector();
 
-        float playerSize = .7f;
-        bool canMove = !Physics.Raycast(transform.position, moveDirection, playerSize);
+        float moveDistance = moveSpeed * Time.deltaTime;
+        float PlayerRadius = .7f;
+        float playerHieght = 2f;
+        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHieght, PlayerRadius, moveDirection, moveDistance);
 
         if (canMove)
         {
