@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInput input;
 
     private bool isWalking;
+    private Vector3 lastInteractDir;
     private void Update()
     {
         MovePlayer();
@@ -17,9 +18,15 @@ public class PlayerController : MonoBehaviour
     private void HandleInteractions()
     {
         Vector3 moveDirection = input.GetInputVector();
+
+
         float interactDistance = 2f;
 
-        if(Physics.Raycast(transform.position, moveDirection, out RaycastHit raycastHit, interactDistance))
+        if (moveDirection != Vector3.zero)
+        {
+            lastInteractDir = moveDirection;
+        }
+        if(Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance))
         {
             Debug.Log(raycastHit.transform);
         }
