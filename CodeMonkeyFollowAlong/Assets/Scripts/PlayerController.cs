@@ -19,6 +19,27 @@ public class PlayerController : MonoBehaviour
         float playerHieght = 2f;
         bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHieght, PlayerRadius, moveDirection, moveDistance);
 
+        if(!canMove)
+        {
+            //if player can't move forward
+            Vector3 moveDirx = new Vector3(moveDirection.x, 0, 0);
+            canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHieght, PlayerRadius, moveDirx, moveDistance);
+            if(canMove)
+            {
+                moveDirection = moveDirx;
+            }
+            else
+            {
+
+                Vector3 moveDirz = new Vector3(0,0,    moveDirection.z);
+                canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHieght, PlayerRadius, moveDirz, moveDistance);
+
+                if(canMove)
+                {
+                    moveDirection = moveDirz;
+                }
+            }
+        }
         if (canMove)
         {
             transform.position += moveDirection * Time.deltaTime * moveSpeed;
