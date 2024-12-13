@@ -11,11 +11,26 @@ public class PlayerController : MonoBehaviour
     private bool isWalking;
     private void Update()
     {
-        movePlayer();
-        
+        MovePlayer();
+        HandleInteractions();
     }
+    private void HandleInteractions()
+    {
+        Vector3 moveDirection = input.GetInputVector();
+        float interactDistance = 2f;
 
-    private void movePlayer()
+        if(Physics.Raycast(transform.position, moveDirection, out RaycastHit raycastHit, interactDistance))
+        {
+            Debug.Log(raycastHit.transform);
+        }
+        else
+        {
+            Debug.Log(".");
+        }
+
+
+    }
+    private void MovePlayer()
     {
         Vector3 moveDirection = input.GetInputVector();
 
