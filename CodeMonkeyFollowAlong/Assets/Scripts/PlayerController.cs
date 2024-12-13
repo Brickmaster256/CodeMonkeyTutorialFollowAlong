@@ -14,7 +14,14 @@ public class PlayerController : MonoBehaviour
         
         Vector3 moveDirection = input.GetInputVector();
 
-        transform.position += moveDirection * Time.deltaTime * moveSpeed;
+        float playerSize = .7f;
+        bool canMove = !Physics.Raycast(transform.position, moveDirection, playerSize);
+
+        if (canMove)
+        {
+            transform.position += moveDirection * Time.deltaTime * moveSpeed;
+        }
+       
 
         isWalking = moveDirection != Vector3.zero;
         float rotateSpeed = 10f;
