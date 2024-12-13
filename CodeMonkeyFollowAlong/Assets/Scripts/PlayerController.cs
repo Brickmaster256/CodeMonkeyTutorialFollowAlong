@@ -11,7 +11,12 @@ public class PlayerController : MonoBehaviour
     private bool isWalking;
     private void Update()
     {
+        movePlayer();
         
+    }
+
+    private void movePlayer()
+    {
         Vector3 moveDirection = input.GetInputVector();
 
         float moveDistance = moveSpeed * Time.deltaTime;
@@ -19,22 +24,22 @@ public class PlayerController : MonoBehaviour
         float playerHieght = 2f;
         bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHieght, PlayerRadius, moveDirection, moveDistance);
 
-        if(!canMove)
+        if (!canMove)
         {
             //if player can't move forward
             Vector3 moveDirx = new Vector3(moveDirection.x, 0, 0).normalized;
             canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHieght, PlayerRadius, moveDirx, moveDistance);
-            if(canMove)
+            if (canMove)
             {
                 moveDirection = moveDirx;
             }
             else
             {
 
-                Vector3 moveDirz = new Vector3(0,0,    moveDirection.z).normalized;
+                Vector3 moveDirz = new Vector3(0, 0, moveDirection.z).normalized;
                 canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHieght, PlayerRadius, moveDirz, moveDistance);
 
-                if(canMove)
+                if (canMove)
                 {
                     moveDirection = moveDirz;
                 }
@@ -44,16 +49,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.position += moveDirection * Time.deltaTime * moveSpeed;
         }
-       
+
 
         isWalking = moveDirection != Vector3.zero;
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
-    }
-
-    private void movePlayer()
-    {
-
     }
 
     public bool IsWalking()
