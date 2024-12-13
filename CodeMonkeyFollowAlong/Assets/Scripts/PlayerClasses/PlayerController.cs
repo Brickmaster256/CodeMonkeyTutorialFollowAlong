@@ -28,12 +28,13 @@ public class PlayerController : MonoBehaviour
         }
         if(Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance))
         {
-            Debug.Log(raycastHit.transform);
+            if(raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
+            {
+                //Has ClearCounter
+                clearCounter.Interact();
+            }
         }
-        else
-        {
-            Debug.Log(".");
-        }
+        
 
 
     }
