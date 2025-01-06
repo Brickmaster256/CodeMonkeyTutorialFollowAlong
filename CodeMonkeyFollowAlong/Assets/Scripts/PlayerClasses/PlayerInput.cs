@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerInput : MonoBehaviour
 {
+    public event EventHandler OnInteractAction;
     private PlayerInputActions playerInputActions;
     private void Awake()
     {
@@ -15,7 +18,8 @@ public class PlayerInput : MonoBehaviour
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log(obj);
+        
+        OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector3 GetInputVector()
