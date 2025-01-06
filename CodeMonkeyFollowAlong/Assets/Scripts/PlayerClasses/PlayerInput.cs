@@ -9,7 +9,15 @@ public class PlayerInput : MonoBehaviour
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
+
+        playerInputActions.Player.Interact.performed += Interact_performed;
     }
+
+    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        Debug.Log(obj);
+    }
+
     public Vector3 GetInputVector()
     {
         Vector3 inputVector = playerInputActions.Player.Move.ReadValue<Vector3>();
