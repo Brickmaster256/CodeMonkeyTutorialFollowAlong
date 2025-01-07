@@ -20,23 +20,11 @@ public class PlayerController : MonoBehaviour
 
     private void Input_OnInteractAction(object sender, System.EventArgs e)
     {
-        Vector3 moveDirection = input.GetInputVector();
-
-
-        float interactDistance = 2f;
-
-        if (moveDirection != Vector3.zero)
+        if ((selectedCounter != null))
         {
-            lastInteractDir = moveDirection;
+            selectedCounter.Interact();
         }
-        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, countersLayerMask))
-        {
-            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
-            {
-                //Has ClearCounter
-                clearCounter.Interact();
-            }
-        }
+        
     }
 
     private void Update()
@@ -74,8 +62,8 @@ public class PlayerController : MonoBehaviour
         {
             selectedCounter = null;
         }
-        
 
+        Debug.Log(selectedCounter);
 
     }
     private void MovePlayer()
