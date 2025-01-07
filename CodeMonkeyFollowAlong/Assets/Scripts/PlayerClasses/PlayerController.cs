@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,13 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    public event EventHandler OnSelectedCounterChanged;
+    public class OnSelectedCounterChangeEventArgs : EventArgs 
+    {
+        public ClearCounter selectedCounter;
+    }
+
+
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private PlayerInput input;
     [SerializeField] private LayerMask countersLayerMask;
@@ -51,6 +59,11 @@ public class PlayerController : MonoBehaviour
                 if(clearCounter != selectedCounter)
                 {
                     selectedCounter = clearCounter;
+
+                    OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangeEventArgs
+                    {
+                        selectedCounter = selectedCounter
+                    });
                 }
             }
             else
@@ -63,7 +76,7 @@ public class PlayerController : MonoBehaviour
             selectedCounter = null;
         }
 
-        Debug.Log(selectedCounter);
+        
 
     }
     private void MovePlayer()
