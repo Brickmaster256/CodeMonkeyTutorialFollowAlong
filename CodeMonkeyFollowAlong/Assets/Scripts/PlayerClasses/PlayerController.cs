@@ -58,22 +58,17 @@ public class PlayerController : MonoBehaviour
                 //Has ClearCounter
                 if(clearCounter != selectedCounter)
                 {
-                    selectedCounter = clearCounter;
-
-                    OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangeEventArgs
-                    {
-                        selectedCounter = selectedCounter
-                    });
+                    SetSelectedCounter(clearCounter);
                 }
             }
             else
             {
-                selectedCounter = null;   
+                SetSelectedCounter(null);
             }
         }
         else
         {
-            selectedCounter = null;
+            SetSelectedCounter(null);
         }
 
         
@@ -119,7 +114,15 @@ public class PlayerController : MonoBehaviour
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
     }
+    private void SetSelectedCounter(ClearCounter selectedCounter)
+    {
+        this.selectedCounter = selectedCounter;
 
+        OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangeEventArgs
+        {
+            selectedCounter = selectedCounter
+        });
+    }
     public bool IsWalking()
     {
         return isWalking;
