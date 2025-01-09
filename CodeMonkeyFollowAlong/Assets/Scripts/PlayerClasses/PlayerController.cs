@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
 
-    public event EventHandler OnSelectedCounterChanged;
-    public class OnSelectedCounterChangeEventArgs : EventArgs 
+    public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
+    public class OnSelectedCounterChangedEventArgs : EventArgs 
     {
         public ClearCounter selectedCounter;
     }
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
     {
         this.selectedCounter = selectedCounter;
 
-        OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangeEventArgs
+        OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs
         {
             selectedCounter = selectedCounter
         });
