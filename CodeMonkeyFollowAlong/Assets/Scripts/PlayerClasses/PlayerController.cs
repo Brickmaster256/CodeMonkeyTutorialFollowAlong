@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; set; }
+    
+
     public event EventHandler OnSelectedCounterChanged;
     public class OnSelectedCounterChangeEventArgs : EventArgs 
     {
