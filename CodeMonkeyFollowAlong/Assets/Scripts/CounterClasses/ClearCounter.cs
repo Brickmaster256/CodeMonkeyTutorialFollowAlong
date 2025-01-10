@@ -9,7 +9,7 @@ public class ClearCounter : MonoBehaviour
 
     public void Interact()
     {
-        Debug.Log("Interact");
+       
         Transform tomatoTransform = Instantiate(tomatoPrefab, counterTopPoint);
         tomatoTransform.localPosition = Vector3.zero;
     }
