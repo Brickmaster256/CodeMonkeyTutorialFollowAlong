@@ -648,6 +648,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 409118830177104635, guid: 9a42d06aa278ff646aae9fd08176ffc4, type: 3}
+      propertyPath: tomatoPrefab
+      value: 
+      objectReference: {fileID: 4835008001533229868, guid: f719d24e0e70ad440a00683936f98fcf, type: 3}
     - target: {fileID: 3014863829767201733, guid: 9a42d06aa278ff646aae9fd08176ffc4, type: 3}
       propertyPath: m_Name
       value: ClearCounter (1)
