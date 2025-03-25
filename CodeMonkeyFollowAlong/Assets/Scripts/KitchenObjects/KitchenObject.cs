@@ -13,7 +13,7 @@ public class KitchenObject : MonoBehaviour
         return kitchenObjectSO;
     }
 
-    public void SetClearcounter(ClearCounter clearCounter)
+    public void SetClearCounter(ClearCounter clearCounter)
     {
         this.clearCounter = clearCounter;
     }
