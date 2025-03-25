@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ClearCounter : MonoBehaviour
 {
+    
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     [SerializeField] private Transform counterTopPoint;
 
+
+    private KitchenObject kitchenObject;
     public void Interact()
     {
        
