@@ -24,10 +24,11 @@ public class ClearCounter : MonoBehaviour
         }
     }
 
-    public void Interact()
+    public void Interact(PlayerInput player)
     {
         if (kitchenObject == null)
         {
+            //Creates the object on the counter
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab, counterTopPoint);
             kitchenObjectTransform.GetComponent<KitchenObject>().SetClearCounter(this);
             kitchenObjectTransform.localPosition = Vector3.zero;
@@ -37,6 +38,8 @@ public class ClearCounter : MonoBehaviour
         }
         else
         {
+            //Give the object to the player
+            //kitchenObject.SetClearCounter(player);
             Debug.Log(kitchenObject.GetClearCounter());
         }
     }
