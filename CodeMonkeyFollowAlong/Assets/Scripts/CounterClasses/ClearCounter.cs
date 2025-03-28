@@ -39,7 +39,7 @@ public class ClearCounter : MonoBehaviour, IKitchenObjectParent
         else
         {
             //Give the object to the player
-            //kitchenObject.SetClearCounter(player);
+            kitchenObject.SetKitchenObjectParent(player);
             
         }
     }

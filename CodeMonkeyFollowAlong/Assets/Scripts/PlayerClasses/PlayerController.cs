@@ -139,27 +139,22 @@ public class PlayerController : MonoBehaviour, IKitchenObjectParent
     {
         return isWalking;
     }
-
     public Transform GetKitchenObjectFollowTransform()
     {
         return kithenObjectHoldPoint;
     }
-
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
         this.kitchenObject = kitchenObject;
     }
-
     public KitchenObject GetKitchenObject()
     {
         return kitchenObject;
     }
-
     public void ClearKitchenObject()
     {
         kitchenObject = null;
     }
-
     public bool HasKitcheObject()
     {
         return kitchenObject != null;
