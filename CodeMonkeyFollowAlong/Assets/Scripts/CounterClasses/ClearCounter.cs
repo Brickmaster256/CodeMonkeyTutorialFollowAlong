@@ -24,7 +24,7 @@ public class ClearCounter : MonoBehaviour, IKitchenObjectParent
         }
     }
 
-    public void Interact(PlayerInput player)
+    public void Interact(PlayerController player)
     {
         if (kitchenObject == null)
         {
@@ -40,7 +40,7 @@ public class ClearCounter : MonoBehaviour, IKitchenObjectParent
         {
             //Give the object to the player
             //kitchenObject.SetClearCounter(player);
-            Debug.Log(kitchenObject.GetClearCounter());
+            
         }
     }
 
