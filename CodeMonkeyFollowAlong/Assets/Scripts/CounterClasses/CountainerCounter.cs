@@ -10,7 +10,7 @@ public class CountainerCounter : BaseCounter, IKitchenObjectParent
 
 
     private KitchenObject kitchenObject;
-    public void Interact(PlayerController player)
+    public override void Interact(PlayerController player)
     {
         if (kitchenObject == null)
         {

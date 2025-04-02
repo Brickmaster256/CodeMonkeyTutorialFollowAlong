@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class BaseCounter : MonoBehaviour
 {
-    
+    public virtual void Interact(PlayerController player)
+    {
+        Debug.LogError("Basecounter.Interact");
+    }
 }

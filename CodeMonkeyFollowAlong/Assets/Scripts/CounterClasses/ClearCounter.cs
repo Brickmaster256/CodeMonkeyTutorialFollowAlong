@@ -14,7 +14,7 @@ public class ClearCounter : BaseCounter, IKitchenObjectParent
 
     
 
-    public void Interact(PlayerController player)
+    public override void Interact(PlayerController player)
     {
         if (kitchenObject == null)
         {
